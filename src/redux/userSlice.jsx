@@ -6,7 +6,7 @@ export const fetchUserData = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.get('http://electricity-manager-api.onrender.com/users/', {
+            const res = await axios.get('https://electricity-manager-api.onrender.com/users/', {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
