@@ -14,7 +14,7 @@ function LoginComponent() {
         e.preventDefault(); // Prevent the form from submitting the traditional way
 
         try {
-            const res = await axios.post('https://electricity-manager-api.onrender.com/login/', {
+            const res = await axios.post('https://electricity-manager-api.onrender.com/api/login/', {
                 username: email,  // Assuming the API expects 'username' instead of 'email'
                 password: password
             });
