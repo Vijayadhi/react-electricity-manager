@@ -6,7 +6,7 @@ export const fetchBuildings = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.get('http://electricity-manager-api.onrender.com/meter/', {
+            const res = await axios.get('https://electricity-manager-api.onrender.com/meter/', {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
@@ -24,7 +24,7 @@ export const postBuildingData = createAsyncThunk(
     async (newBuilding, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.post('http://electricity-manager-api.onrender.com/meter/', newBuilding, {
+            const res = await axios.post('https://electricity-manager-api.onrender.com/meter/', newBuilding, {
                 headers: {
                     'Authorization': `Token ${token}`,
                     'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ export const updateBuildingData = createAsyncThunk(
     async ({ id, updatedBuilding }, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.put(`http://electricity-manager-api.onrender.com/meter/${id}/`, updatedBuilding, {
+            const res = await axios.put(`https://electricity-manager-api.onrender.com/meter/${id}/`, updatedBuilding, {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
@@ -59,7 +59,7 @@ export const deleteBuildingData = createAsyncThunk(
     async (id, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.delete(`http://electricity-manager-api.onrender.com/meter/${id}/`, {
+            const res = await axios.delete(`https://electricity-manager-api.onrender.com/meter/${id}/`, {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
