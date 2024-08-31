@@ -6,7 +6,7 @@ export const fetchBuildings = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.get('http://127.0.0.1:8000/meter/', {
+            const res = await axios.get('http://electricity-manager-api.onrender.com/meter/', {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
@@ -24,7 +24,7 @@ export const postBuildingData = createAsyncThunk(
     async (newBuilding, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.post('http://127.0.0.1:8000/meter/', newBuilding, {
+            const res = await axios.post('http://electricity-manager-api.onrender.com/meter/', newBuilding, {
                 headers: {
                     'Authorization': `Token ${token}`,
                     'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ export const updateBuildingData = createAsyncThunk(
     async ({ id, updatedBuilding }, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.put(`http://127.0.0.1:8000/meter/${id}/`, updatedBuilding, {
+            const res = await axios.put(`http://electricity-manager-api.onrender.com/meter/${id}/`, updatedBuilding, {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
@@ -59,7 +59,7 @@ export const deleteBuildingData = createAsyncThunk(
     async (id, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.delete(`http://127.0.0.1:8000/meter/${id}/`, {
+            const res = await axios.delete(`http://electricity-manager-api.onrender.com/meter/${id}/`, {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
