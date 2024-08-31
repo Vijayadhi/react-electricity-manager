@@ -11,7 +11,7 @@ function TopBarComponet() {
   const logout = async () => {
     try {
 
-      const res = await axios.post('http://127.0.0.1:8000/api/logout/',
+      const res = await axios.post('https://electricity-manager-api.onrender.com/api/logout/',
         {}, {
         headers: {
           'Authorization': `Token ${token}`,  // Include the token in the request headers
