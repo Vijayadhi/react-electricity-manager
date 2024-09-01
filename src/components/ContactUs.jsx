@@ -8,9 +8,9 @@ import TopBarComponet from './TopBarComponet';
 import FootBarComponent from './FootBarComponent';
 
 function ContactUs() {
-    const instagramQR = '/qr/instagram.jpeg';
-    const whatsappQR = '/qr/whatsapp.jpeg';
-    const linkedinQR = '/qr/linkedin.png';
+    const instagramQR = new URL('../qr/instagram.jpeg', import.meta.url).href;
+    const whatsappQR = new URL('../qr/whatsapp.jpeg', import.meta.url).href;
+    const linkedinQR = new URL('../qr/linkedin.png', import.meta.url).href;
 
     return (
         <>
@@ -42,7 +42,7 @@ function ContactUs() {
                         textAlign: 'center'
                     }}>
                         <img
-                            src=`${instagramQR}`
+                            src={instagramQR}
                             alt="Instagram QR Code"
                             style={{
                                 width: '400px',
@@ -61,7 +61,7 @@ function ContactUs() {
                         textAlign: 'center'
                     }}>
                         <img
-                            src=`${whatsappQR}`
+                            src={whatsappQR}
                             alt="WhatsApp QR Code"
                             style={{
                                 width: '400px',
@@ -80,7 +80,7 @@ function ContactUs() {
                         textAlign: 'center'
                     }}>
                         <img
-                            src=`${linkedinQR}`
+                            src={linkedinQR}
                             alt="LinkedIn QR Code"
                             style={{
                                 width: '400px',
