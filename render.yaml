@@ -1,0 +1,3 @@
+rewrites:
+  - source: /<*>  # Match all paths
+    destination: /index.html
