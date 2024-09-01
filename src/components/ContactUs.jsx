@@ -1,13 +1,17 @@
 import React from 'react';
 
 // Import QR code images from the src/qr directory
-import instagramQR from '../qr/instagram.jpeg';
-import whatsappQR from '../qr/whatsapp.jpeg';
-import linkedinQR from '../qr/linkedIN.png';
+// import instagramQR from '../qr/instagram.jpeg';
+// import whatsappQR from '../qr/whatsapp.jpeg';
+// import linkedinQR from '../qr/linkedIN.png';
 import TopBarComponet from './TopBarComponet';
 import FootBarComponent from './FootBarComponent';
 
 function ContactUs() {
+    const instagramQR = '/qr/instagram.jpeg';
+    const whatsappQR = '/qr/whatsapp.jpeg';
+    const linkedinQR = '/qr/linkedin.png';
+
     return (
         <>
             <TopBarComponet />
