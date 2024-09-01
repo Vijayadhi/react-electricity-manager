@@ -10,7 +10,7 @@ import FootBarComponent from './FootBarComponent';
 function ContactUs() {
     const instagramQR = new URL('../qr/instagram.jpeg', import.meta.url).href;
     const whatsappQR = new URL('../qr/whatsapp.jpeg', import.meta.url).href;
-    const linkedinQR = new URL('../qr/linkedin.png', import.meta.url).href;
+    const linkedinQR = new URL('../qr/linkedIN.png', import.meta.url).href;
 
     return (
         <>
