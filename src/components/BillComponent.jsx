@@ -20,6 +20,7 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import calculateBill from '../Helper.js';
+import FootBarComponent from './FootBarComponent.jsx';
 
 function BillComponent() {
     const dispatch = useDispatch();
@@ -62,9 +63,14 @@ function BillComponent() {
         }
     }, [previousReading, currentReading]);
 
+    const getBuildingNameById = (id) => {
+        const building = buildingData.find(b => b.id === id);
+        return building ? building.name : 'Unknown';
+    };
+
     const columns = [
         { field: 'id', headerName: 'ID', width: 50 },
-        { field: 'Meter', headerName: 'Meter', width: 150 },
+        { field: 'Building', headerName: 'Building', width: 150 },
         { field: 'Month', headerName: 'Month', width: 150 },
         { field: 'PreviousReading', headerName: 'Previous Reading', width: 200 },
         { field: 'CurrentReading', headerName: 'Current Reading', width: 200 },
@@ -86,10 +92,11 @@ function BillComponent() {
             )
         },
     ];
+    // console.log(buildingData);
 
     const rows = billData.map((bill) => ({
         id: bill.id,
-        Meter: bill.meter || 'Unknown',
+        Building: getBuildingNameById(bill.meter),
         Month: new Date(bill.month).toLocaleDateString() || 'Unknown',
         PreviousReading: bill.previous_reading || 'Unknown',
         CurrentReading: bill.current_reading || 'Unknown',
@@ -123,7 +130,7 @@ function BillComponent() {
         e.preventDefault();
 
         const newBill = {
-            meter: building,            
+            meter: building,
             month,
             previous_reading: previousReading,
             current_reading: currentReading,
@@ -262,6 +269,8 @@ function BillComponent() {
                     />
                 </Box>
             </Container>
+            <FootBarComponent/>
+
         </>
     );
 }

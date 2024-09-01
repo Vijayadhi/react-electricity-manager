@@ -2,19 +2,23 @@ import BuildingsComponent from "../components/BuildingsComponent";
 import ContentWrapper from "../components/ContentWrapper";
 import DashboardComponent from "../components/DashboardComponent";
 import LoginComponent from "../components/LoginComponent";
-import { Navigate } from 'react-router-dom'
-import TopBarComponet from "../components/TopBarComponet";
 import ProfileComponent from "../components/ProfileComponent";
 import BillComponent from "../components/BillComponent";
+import ContactUs from "../components/ContactUs";
+import PrivateRoute from "./PrivateRoute"; // Import the PrivateRoute component
+
 export default [
-    
     {
         path: '/',
         element: <ContentWrapper/>
     },
     {
         path: '/dashboard',
-        element: <DashboardComponent/>
+        element: (
+            <PrivateRoute>
+                <DashboardComponent />
+            </PrivateRoute>
+        )
     },
     {
         path: '/login',
@@ -22,14 +26,30 @@ export default [
     },
     {
         path: '/buildings',
-        element: <BuildingsComponent/>
+        element: (
+            <PrivateRoute>
+                <BuildingsComponent />
+            </PrivateRoute>
+        )
     },
     {
         path: '/profile',
-        element: <ProfileComponent/>
+        element: (
+            <PrivateRoute>
+                <ProfileComponent />
+            </PrivateRoute>
+        )
     },
     {
         path: '/bills',
-        element: <BillComponent/>
+        element: (
+            <PrivateRoute>
+                <BillComponent />
+            </PrivateRoute>
+        )
+    },
+    {
+        path: '/contact_us',
+        element: <ContactUs/>
     }
-]
+];

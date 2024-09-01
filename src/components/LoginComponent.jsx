@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import '../login.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import TopBarComponet from './TopBarComponet';
+import FootBarComponent from './FootBarComponent';
+import { Link } from 'react-router-dom'
 
 function LoginComponent() {
     let [email, setemail] = useState('');
@@ -10,11 +13,13 @@ function LoginComponent() {
 
     const navigate = useNavigate();
 
+    const APIURL = 'https://electricity-manager-api.onrender.com/api'
+
     const getAuth = async (e) => {
         e.preventDefault(); // Prevent the form from submitting the traditional way
 
         try {
-            const res = await axios.post('http://127.0.0.1:8000/api/login/', {
+            const res = await axios.post(`${APIURL}/login/`, {
                 username: email,  // Assuming the API expects 'username' instead of 'email'
                 password: password
             });
@@ -24,27 +29,22 @@ function LoginComponent() {
                 // Store the token in state and localStorage
                 const token = res.data.token;  // Make sure to access `token` from `res.data`
                 setAuthToken(token);
-                console.log(token);
-
                 navigate('/dashboard')
-
-
                 localStorage.setItem('authToken', token);
-
-                console.log('Token stored successfully:', token);
             } else {
-                console.error('Authentication failed with status:', res.status);
+                toast.error("Failed to Login")
             }
         } catch (error) {
-            console.error('Error during authentication:', error);
+            toast.error("Failed to Login");
+            console.error('Error during authentication:');
         }
     };
 
     return (
         <>
             {auth_token}
+            <TopBarComponet />
             <br />
-
             <div className="login-wrap">
                 <div className="login-html">
                     <input id="tab-1" type="radio" name="tab" className="sign-in" checked /><label for="tab-1" className="tab">Sign In</label>
@@ -68,7 +68,11 @@ function LoginComponent() {
                             </div>
                         </form>
                         <div className="sign-up-htm">
-                            <div className="group">
+                            <br></br>
+                            <h5 style={{ color: "#fff" }}>Please Contact developer for Registration Assistance</h5>
+                            <br /><br />
+                            <h4 ><Link to='/contact_us' style={{ color: "#fff" }}>Click Here to contact developer</Link></h4>
+                            {/* <div className="group">
                                 <label for="user" className="label">Username</label>
                                 <input id="user" type="text" className="input" />
                             </div>
@@ -90,11 +94,12 @@ function LoginComponent() {
                             <div className="hr"></div>
                             <div className="foot-lnk">
                                 <label for="tab-1">Already Member?</label>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
             </div>
+            <FootBarComponent />
         </>
     )
 }

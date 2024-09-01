@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import calculateBill from '../Helper.js'
 import TopBarComponet from './TopBarComponet.jsx';
+import FootBarComponent from './FootBarComponent.jsx';
 
 function ContentWrapper() {
     const [pre_reading, set_pre_reading] = useState(0);
@@ -74,7 +75,9 @@ function ContentWrapper() {
                     </tbody>
                 </table>
             </div>
+
         </div>
+        <FootBarComponent/>
 
     </>
 

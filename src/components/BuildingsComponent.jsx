@@ -18,6 +18,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import toast from 'react-hot-toast';
+import FootBarComponent from './FootBarComponent';
 
 function BuildingsComponent() {
     const dispatch = useDispatch();
@@ -40,7 +41,6 @@ function BuildingsComponent() {
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 50 },
-        { field: 'User', headerName: 'User name', width: 130 },
         { field: 'Building', headerName: 'Building Name', width: 150 },
         { field: 'Consumer_No', headerName: 'Consumer Number', width: 150 },
         { field: 'BuildingType', headerName: 'Building Type', width: 150 },
@@ -64,7 +64,6 @@ function BuildingsComponent() {
 
     const rows = buildingData.map((building) => ({
         id: building.id,
-        User: userData.find(user => user.id === building.user)?.username || 'Unknown',
         Building: building.name || 'Unknown',
         Consumer_No: building.cons_no || 'Unknown',
         BuildingType: building.building_type || 'Unknown',
@@ -243,6 +242,7 @@ function BuildingsComponent() {
                     </Box>
                 </Box>
             </Container>
+            <FootBarComponent/>
         </>
     );
 }

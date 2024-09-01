@@ -5,13 +5,14 @@ import { Link, useNavigate } from 'react-router-dom'
 function TopBarComponet() {
   const navigate = useNavigate();
 
+  const APIURL = 'https://electricity-manager-api.onrender.com/api'
   const token = localStorage.getItem('authToken');
-  console.log(token);
+  
 
   const logout = async () => {
     try {
 
-      const res = await axios.post('http://127.0.0.1:8000/api/logout/',
+      const res = await axios.post(`${APIURL}/logout/`,
         {}, {
         headers: {
           'Authorization': `Token ${token}`,  // Include the token in the request headers
@@ -19,6 +20,7 @@ function TopBarComponet() {
         },
       });
       localStorage.removeItem('authToken');
+      localStorage.removeItem('authenticated')
       navigate('/')
 
       // setUserData(res.data);
@@ -53,7 +55,7 @@ function TopBarComponet() {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link"><i className="fa-solid fa-phone"></i> Contact Us</a>
+              <a className="nav-link" onClick={()=>navigate('/contact_us')}><i className="fa-solid fa-phone"></i> Contact Us</a>
             </li>
             <li className="nav-item">
             <Link className="nav-link" onClick={()=>navigate('/profile')}><i className="fa-solid fa-user"></i> Profile</Link>
@@ -72,12 +74,9 @@ function TopBarComponet() {
             <li className="nav-item">
               <Link className="nav-link" onClick={()=>navigate('/login')}><i className="fa-solid fa-book-tanakh"></i> Get In</Link>
             </li>
-
+            
             <li className="nav-item">
-              <a className="nav-link" href="#"><i className="fa-solid fa-passport"></i> About Us</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link"><i className="fa-solid fa-message"></i> Contact Us</a>
+              <a className="nav-link" onClick={()=>navigate('/contact_us')}><i className="fa-solid fa-message"></i> Contact Us</a>
             </li>
           </ul>}
 

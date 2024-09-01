@@ -1,17 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
+const APIURL = 'https://electricity-manager-api.onrender.com'
 export const fetchBuildings = createAsyncThunk(
     'buildings/fetchBuildings',
     async (_, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.get('http://127.0.0.1:8000/meter/', {
+            const res = await axios.get(`${APIURL}/meter/`, {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
             });
-            console.log(res);            
             return res.data;
         } catch (error) {
             return rejectWithValue('Error fetching buildings');
@@ -24,7 +25,7 @@ export const postBuildingData = createAsyncThunk(
     async (newBuilding, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.post('http://127.0.0.1:8000/meter/', newBuilding, {
+            const res = await axios.post(`${APIURL}/meter/`, newBuilding, {
                 headers: {
                     'Authorization': `Token ${token}`,
                     'Content-Type': 'application/json'
@@ -42,7 +43,7 @@ export const updateBuildingData = createAsyncThunk(
     async ({ id, updatedBuilding }, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.put(`http://127.0.0.1:8000/meter/${id}/`, updatedBuilding, {
+            const res = await axios.put(`${APIURL}/meter/${id}/`, updatedBuilding, {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
@@ -59,7 +60,7 @@ export const deleteBuildingData = createAsyncThunk(
     async (id, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('authToken');
-            const res = await axios.delete(`http://127.0.0.1:8000/meter/${id}/`, {
+            const res = await axios.delete(`${APIURL}/meter/${id}/`, {
                 headers: {
                     'Authorization': `Token ${token}`
                 }

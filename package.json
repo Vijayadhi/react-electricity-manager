@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "start": "npm run build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -23,6 +24,7 @@
     "chart.js": "^4.4.4",
     "react": "^17.0.0 || ^18.0.0",
     "react-bootstrap": "^2.10.4",
+    "react-calendar": "^5.0.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-hot-toast": "^2.4.1",
