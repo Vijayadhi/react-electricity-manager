@@ -42,7 +42,7 @@ function ContactUs() {
                         textAlign: 'center'
                     }}>
                         <img
-                            src={instagramQR}
+                            src=`${instagramQR}`
                             alt="Instagram QR Code"
                             style={{
                                 width: '400px',
@@ -61,7 +61,7 @@ function ContactUs() {
                         textAlign: 'center'
                     }}>
                         <img
-                            src={whatsappQR}
+                            src=`${whatsappQR}`
                             alt="WhatsApp QR Code"
                             style={{
                                 width: '400px',
@@ -80,7 +80,7 @@ function ContactUs() {
                         textAlign: 'center'
                     }}>
                         <img
-                            src={linkedinQR}
+                            src=`${linkedinQR}`
                             alt="LinkedIn QR Code"
                             style={{
                                 width: '400px',
